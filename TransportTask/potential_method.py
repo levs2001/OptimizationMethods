@@ -1,3 +1,4 @@
+import copy
 from data_structure import TransportTask, OneLineEquation
 from algorithms import calculate_function
 
@@ -16,7 +17,7 @@ def potential_method(task: TransportTask, start_plan):
     :param start_plan: Начальный план
     :return: Оптимальный план
     """
-    plan = start_plan
+    plan = copy.deepcopy(start_plan)
     filled_needed = len(task.v_exporter) + len(task.v_importer) - 1
 
     while True:

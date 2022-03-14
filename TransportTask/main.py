@@ -4,9 +4,9 @@ from algorithms import north_west_method, calculate_function
 from potential_method import potential_method
 
 if __name__ == '__main__':
-    with loader.Loader("our_problem.txt") as data:
+    with loader.Loader("problems/our_problem_fines.txt") as data:
         m_cost, v_exporter, v_importer = data
-    task = ds.TransportTask(m_cost, v_exporter, v_importer)
+    task = ds.TransportTask(m_cost, v_exporter, v_importer, "problems/our_fines.txt")
 
     start_plan = north_west_method(task)
     print("Start plan: ")
