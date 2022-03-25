@@ -1,5 +1,4 @@
-import json
-import function as fun
+from findMinimum import function as fun
 import methods as m
 
 # Метод дихотомии

@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 import numpy as np
-import function as f
+from findMinimum import function as f
 
 y = np.vectorize(f.Function.F)
 x = np.linspace(f.Function.LEFT_BORDER, f.Function.RIGHT_BORDER, 100)
