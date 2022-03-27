@@ -1,3 +1,4 @@
+from functools import cache
 from math import sin
 
 
@@ -8,6 +9,7 @@ class Function:
     EPSILON = 0.05
 
     @staticmethod
+    @cache
     def F(x):
         Function.counter += 1
         return x * x * x - 3 * sin(x)

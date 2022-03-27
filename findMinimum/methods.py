@@ -1,6 +1,5 @@
 from fibonacci import fibo
 
-
 # Выбираем отрезки так:
 # aa = c - r; bb = c + r, где
 # r = k * (b - a), где k = 0.01
@@ -23,7 +22,7 @@ def Fibonacci(func, a, b, eps):
 
     n = 1
     fib = fibo(n)
-    N = (b - a) / (2 * eps)
+    N = (b - a) / eps
     while N > fib:
         n += 1
         fib = fibo(n)
