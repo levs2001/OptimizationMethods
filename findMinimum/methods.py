@@ -27,7 +27,7 @@ def Uniform(func, a, b, eps):
 
 
 def Fibonacci(func, a, b, eps):
-    delta = 0.008
+    delta = 0.001
 
     # n = 5
     # fib = fibo(n)
@@ -55,27 +55,27 @@ def Fibonacci(func, a, b, eps):
     return res, func(res), a, b
 
 
-def FibonacciCycle(func, a, b, s, k, lymda, mu, eps):
-    # print("Segment = [", a, b, f"], {b - a}")
+def FibonacciCycle(func, a, b, s, k, lymda, mu, delta):
+    print("Segment = [", a, b, f"], {b - a}")
     if func(lymda) > func(mu):
         a = lymda
         lymda = mu
         mu = a + (b - a) * fibo(s - 1 - k) / fibo(s - k)
         if k == s - 2:
-            if func(lymda) > func(lymda + eps):
+            if func(lymda) > func(lymda + delta):
                 return lymda, b
             else:
-                return a, lymda+eps
+                return a, lymda + delta
         else:
-            return FibonacciCycle(func, a, b, s, k + 1, lymda, mu, eps)
+            return FibonacciCycle(func, a, b, s, k + 1, lymda, mu, delta)
     else:
         b = mu
         mu = lymda
         lymda = a + (b - a) * fibo(s - 2 - k) / fibo(s - k)
         if k == s - 2:
-            if func(lymda) > func(lymda + eps):
+            if func(lymda) > func(lymda + delta):
                 return lymda, b
             else:
-                return a, lymda+eps
+                return a, lymda + delta
         else:
-            return FibonacciCycle(func, a, b, s, k + 1,lymda, mu, eps)
+            return FibonacciCycle(func, a, b, s, k + 1, lymda, mu, delta)
