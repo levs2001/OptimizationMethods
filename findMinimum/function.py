@@ -12,5 +12,5 @@ class Function:
     @cache
     def F(x):
         Function.counter += 1
-        print(f'f(x), x={x}')
+        # print(f'f(x), x={x}')
         return x * x * x - 3 * sin(x)
