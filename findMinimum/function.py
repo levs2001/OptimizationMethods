@@ -6,7 +6,7 @@ class Function:
     counter = 0
     LEFT_BORDER = 0.5
     RIGHT_BORDER = 1
-    EPSILON = 0.05
+    EPSILON = 0.01
 
     @staticmethod
     @cache
