@@ -29,4 +29,3 @@ if __name__ == '__main__':
         print("Segment = [", result_a, ",", result_b, "]", file=f)
         print("count calls :", fun.Function.counter, file=f)
         print("epsilon :", fun.Function.EPSILON, file=f)
-
