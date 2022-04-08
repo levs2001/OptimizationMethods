@@ -11,4 +11,12 @@ def grad(x: np.array) -> np.array:
     return np.array([dx, dy])
 
 
+def hessian(x: np.array) -> np.array:
+    exp = np.exp(x[0]**2 + 2 * x[1]**2)
+    h11 = 4 * x[0]**2 * exp + 2 * exp + 2
+    h12 = h21 = 8 * x[0] * x[1] * exp
+    h22 = 16 * x[1]**2 * exp + 4 * exp
+    return np.array([[h11, h12],
+                     [h21, h22]])
+
 
