@@ -13,7 +13,7 @@ def prove_orthogonality(x0, alpha0):
     xk = solver.grad_descent(x0, alpha0, eps)
     dx_last = xk[-1] - xk[-2]
     dx_before_last = xk[-2] - xk[-3]
-    print(f'inner product of 2 last gradient lines: {np.inner(dx_last, dx_before_last)}')
+    print(f'inner product of 2 last gradient lines: {np.inner(dx_last, dx_before_last)}') # ~ 10e-11
 
 
 # run in jupyter or smth
@@ -43,10 +43,14 @@ def solve_for_dif_error(x0, alpha0, errors, solution):
 
 if __name__ == '__main__':
 
-    solution = np.array([ -0.65993096, -0.36934539])
+    solution = np.array([-0.65993096, -0.36934539])
     eps = 1e-2
     alpha = 0.5
     x = np.array([1.5, 2.3])
 
-    solve_for_dif_error(x, alpha, [0.1, 0.01, 0.001], solution)
+    # smh convergence is too fast, mb stop criteria is too strong
+    solver = Solver(function.f, function.grad)
+    xk = solver.PR_conjugate_grad(x, alpha, eps)
+    for ind, xx in enumerate(xk):
+        print(f'iter {ind}: error {np.linalg.norm(xx - solution, 2)}')
 
