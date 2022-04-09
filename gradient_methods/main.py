@@ -17,17 +17,18 @@ def prove_orthogonality(solver):
 
 # run in jupyter or smth
 def prove_linear_convergence(solver):
+    error = np.array([i for i in range(1, 9)])  # converted from 10**(-i) to i for plotting and regression
     iters = []
     for err in [10**(-i) for i in range(1, 9)]:
-        iters.append(solver.grad_descent(err))
+        iters.append(np.size(solver.grad_descent(err)) - 1)
 
-    error = np.array([i for i in range(1, 9)])  # converted from 10**(-i) to i for plotting and regression
     regr = stat.linregress(error, iters)
 
     plt.xlabel("iterations")
     plt.ylabel("-log10(eps)")
-    plt.legend(['data', 'linear regression'])
     plt.plot(error, iters, error, regr.intercept + regr.slope * error, '--')
+    plt.legend(['data', 'linear regression'])
+    plt.show()
 
 
 def solve_for_dif_error(solver_method, errors, solution):
@@ -44,10 +45,11 @@ if __name__ == '__main__':
     x = np.array([1.5, 2.3])
     solver = Solver(function.f, function.grad, function.hessian)
 
-    errors = [0.1, 0.01, 0.001]
-    solve_for_dif_error(solver.grad_descent, errors, solution)
-
-    solve_for_dif_error(solver.second_order_descent, errors, solution)
+    prove_linear_convergence(solver)
+    # errors = [0.1, 0.01, 0.001]
+    # solve_for_dif_error(solver.grad_descent, errors, solution)
+    #
+    # solve_for_dif_error(solver.second_order_descent, errors, solution)
 
 
 
